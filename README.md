@@ -1,35 +1,87 @@
-# 🏠 RoommateSync
+# 🏡 RoommateSync
 
-RoommateSync is a Flutter-based mobile application designed to simplify shared living by offering seamless **task management**, **expense tracking with UPI integration**, and **interactive roommate coordination tools** like polls and activity reminders.
+**RoommateSync** is a powerful and intuitive Flutter application designed to simplify shared living. Whether it’s tracking tasks, splitting expenses, planning group activities, or keeping memories with your roommates, RoommateSync keeps everything organized in one place.
+
+---
 
 ## ✨ Features
 
-- ✅ **Task Management**  
-  Assign, track, and auto-delete roommate tasks with reminders and status updates.
+### ✅ Implemented
 
-- 💸 **Expense Management with UPI Integration**  
-  Add expenses, split bills, redirect to UPI apps (like PhonePe), auto-update balances, and send casual reminders.
+- 🔐 **Authentication**
+  - Sign in with Email/Password or Google
+  - Secure login and logout
 
-- 🔔 **Push Notifications**  
-  Get notified for task assignments, completions, deadlines, and poll updates.
+- 👥 **Room Management**
+  - Join or create shared rooms using a unique room code
 
-- 📷 **Photo Storage**  
-  Capture and save images within the app, stored securely in Firebase.
+- ✅ **Task Management**
+  - Add, assign, and complete tasks
+  - Statistics for assigned vs. completed tasks
+  - Automatic task deletion after completion or deadline
 
-- 🗳️ **Poll-Based Activity Planning**  
-  Create polls for group activities, display results via bar charts, and schedule shared events with reminders.
+- 💸 **Expense Management**
+  - Add and split expenses among selected roommates
+  - Track balances for each member
+  - Multi-select dropdown to assign expense shares
 
-- 📊 **Statistics Dashboard**  
-  Visual summary of roommate activity—completed tasks, pending expenses, etc.
+- 📲 **Push Notifications**
+  - Task assignment, completion, and deadline reminders
+  - Poll creation announcements
 
-## 🚀 Tech Stack
+- 📷 **Camera & Album**
+  - Take pictures, videos or select from the gallery
+  - Upload and store them in Firestore
+  - View shared photo memories within the app
+
+- 📊 **Poll System**
+  - Create polls to plan activities
+  - "Plan Activity" button for scheduling without polls
+
+- 📈 **Statistics Dashboard**
+  - Overview of tasks in a clean, visual format
+
+---
+
+### 🚧 Planned
+
+- 💰 **UPI Integration**
+  - Add UPI ID for each roommate
+  - Direct redirection to UPI apps with pre-filled data
+  - Auto-update payment status and remove completed expenses
+
+- 📅 **Planned Activity Notifications**
+  - Integrate shared calendar reminders for scheduled events
+  - Random fun prompts and activity suggestions
+  - Notify roommates about upcoming shared plans
+  - Announce the winning activity via notification
+
+---
+
+## 🛠️ Tech Stack
 
 - **Flutter**
-- **Firebase (Auth, Firestore, Storage, Cloud Messaging)**
-- **Cloudinary (Image Uploads)**
-- **Cashfree Payment Gateway**
-- **Push Notifications (FCM)**
+- **Firebase Auth & Firestore**
+- **Firebase Cloud Messaging**
+- **Cloudinary (for image and videos uploads)**
+- **Push Notifications**
+- **Provider (State Management)**
 
-## 📦 Project Structure
+---
 
+## 🚀 Getting Started
 
+### 🔧 Prerequisites
+
+- Flutter SDK (latest)
+- Firebase Project (Firestore, Auth, Cloud Messaging)
+- Cloudinary account (for image storage)
+- Android Studio / VSCode
+- Internet Connection
+
+### 📦 Installation
+
+```bash
+git clone https://github.com/your-username/RoommateSync.git
+cd RoommateSync
+flutter pub get
