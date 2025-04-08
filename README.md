@@ -82,6 +82,6 @@
 ### 📦 Installation
 
 ```bash
-git clone https://github.com/your-username/RoommateSync.git
-cd RoommateSync
+git clone https://github.com/AnjaliKhosya/Roommate_Sync.git
+cd Roommate_Sync
 flutter pub get
