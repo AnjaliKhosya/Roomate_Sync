@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "896045844969",
+    "project_id": "roomatesync-83596",
+    "storage_bucket": "roomatesync-83596.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896045844969:android:5c4ff1fc9799e47eaee378",
+        "android_client_info": {
+          "package_name": "com.example.roomate_sync"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896045844969-vaihl9ieo1tcqii043s9r9iv0cb4md90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.roomate_sync",
+            "certificate_hash": "d29af6ae7519e78b5eacca5083966fc2c8f54c59"
+          }
+        },
+        {
+          "client_id": "896045844969-9fhvpur2q8n9umc4be2l19jo383gabjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVzahjZ8XlQ-Ncwe8mH4F_-GJshDca-aY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896045844969-9fhvpur2q8n9umc4be2l19jo383gabjt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "896045844969-jll8p6hebk3tatc0gbhkd0423t0rjsoa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.roomateSync"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
