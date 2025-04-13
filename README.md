@@ -58,30 +58,7 @@
 
 ## 📷 App Screenshots
 
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.06.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.07.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.08.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.08 (1).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.08 (2).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.09.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.09 (1).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.09 (2).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.10.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.10 (1).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.10 (2).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.11.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.11 (1).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.11 (2).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.12.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.12 (1).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.12 (2).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.13.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.13 (1).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.14.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.14 (1).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.14 (2).jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.15.jpeg)  
-![Screenshot](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.15 (1).jpeg)
+![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/6912738086f53426435fe6c17975f6a0c663f85e/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.06.jpeg)
 
 ---
 
