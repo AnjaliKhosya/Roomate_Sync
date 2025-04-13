@@ -59,7 +59,7 @@ class _signUpScreenState extends State<signUpScreen> {
           padding: const EdgeInsets.only(left: 85.0),
           child: Text('Sign Up',style: TextStyle(fontSize: 25,color: Colors.white,fontFamily: 'Italicfont',fontWeight: FontWeight.bold),),
         ),
-        backgroundColor: Color(0Xff284B63),
+        backgroundColor: Color(0xFF0B0B45),
         iconTheme: IconThemeData(
             color: Colors.white
         ),
@@ -197,7 +197,7 @@ class _signUpScreenState extends State<signUpScreen> {
                             signUp();
                           },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0Xff284B63),
+                                backgroundColor: Color(0xFF0B0B45),
                               ),
                               child: Text('Sign up',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300,color: Colors.white,fontFamily: 'Italicfont'),)),
                         ),//Login

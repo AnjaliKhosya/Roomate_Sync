@@ -64,7 +64,7 @@ class _forgetPasswordState extends State<forgetPassword> {
         iconTheme: IconThemeData(
             color: Colors.white
         ),
-        backgroundColor: Color(0Xff284B63),
+        backgroundColor: Color(0xFF0B0B45),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -138,7 +138,7 @@ class _forgetPasswordState extends State<forgetPassword> {
                       reset();
                     },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0Xff284B63),
+                          backgroundColor: Color(0xFF0B0B45),
                         ),
                         child: Text('Send Link',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w300,color: Colors.white,fontFamily: 'Italicfont'),)),
                   ),

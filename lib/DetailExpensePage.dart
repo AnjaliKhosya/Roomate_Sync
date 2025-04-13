@@ -19,6 +19,7 @@ class DetailExpensePage extends StatefulWidget {
 class _DetailExpensePageState extends State<DetailExpensePage> {
   Map<String, String> userNames = {};   // Stores <userID, name>
   Map<String, String> userUpiIds = {};  // Stores <userID, upiId>
+  Map<String, String> userProfilePics = {};  // Stores <userID, profilePicUrl>
   bool isLoading = true;                // Flag to track data loading
 
   @override
@@ -27,7 +28,7 @@ class _DetailExpensePageState extends State<DetailExpensePage> {
     _fetchRoommateDetails();
   }
 
-  // ✅ Fetch Roommates' Names and UPI IDs
+  // ✅ Fetch Roommates' Names, UPI IDs, and Profile Picture URLs
   Future<void> _fetchRoommateDetails() async {
     try {
       final expenseDoc = await FirebaseFirestore.instance
@@ -47,6 +48,7 @@ class _DetailExpensePageState extends State<DetailExpensePage> {
 
       Map<String, String> tempNames = {};
       Map<String, String> tempUpiIds = {};
+      Map<String, String> tempProfilePics = {};
 
       // 🔥 Fetch roommate details concurrently
       List<Future<void>> fetchTasks = [];
@@ -59,11 +61,13 @@ class _DetailExpensePageState extends State<DetailExpensePage> {
             .then((userDoc) {
           if (userDoc.exists) {
             final userData = userDoc.data()!;
-            tempNames[userId] = userData['displayName'] ?? 'Unknown';
+            tempNames[userId] = userData['name'] ?? 'Unknown';
             tempUpiIds[userId] = userData['upiId'] ?? '';
+            tempProfilePics[userId] = userData['profileImage'] ?? ''; // Fetch profile picture URL (assuming it's a URL to Cloudinary)
           } else {
             tempNames[userId] = 'Unknown';
             tempUpiIds[userId] = '';
+            tempProfilePics[userId] = '';  // Set empty profile picture if not found
           }
         }));
       }
@@ -73,6 +77,7 @@ class _DetailExpensePageState extends State<DetailExpensePage> {
       setState(() {
         userNames = tempNames;
         userUpiIds = tempUpiIds;
+        userProfilePics = tempProfilePics;
         isLoading = false;
       });
     } catch (e) {
@@ -111,6 +116,7 @@ class _DetailExpensePageState extends State<DetailExpensePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -193,6 +199,7 @@ class _DetailExpensePageState extends State<DetailExpensePage> {
                       final userId = owedBy[index];
                       final userName = userNames[userId] ?? 'Unknown';
                       final upiId = userUpiIds[userId] ?? '';
+                      final profilePicUrl = userProfilePics[userId] ?? '';
 
                       return Card(
                         elevation: 3,
@@ -200,14 +207,25 @@ class _DetailExpensePageState extends State<DetailExpensePage> {
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: ListTile(
+                          contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 10),  // Increased padding for larger cards
                           leading: CircleAvatar(
-                            backgroundColor: Colors.blue,
-                            child: Text(userName[0].toUpperCase()),
+                            radius: 28,  // Slightly larger avatar
+                            backgroundColor: Colors.purple,
+                            backgroundImage: profilePicUrl.isNotEmpty
+                                ? NetworkImage(profilePicUrl)  // Fetch image from Cloudinary URL
+                                : null,  // Display profile picture if available
+                            child: profilePicUrl.isEmpty ? Text(userName[0].toUpperCase(),style: TextStyle(color: Colors.white,fontSize: 20),) : null,
                           ),
                           title: Text(userName),
                           trailing: ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                            ),
                             icon: const Icon(Icons.currency_rupee),
-                            label: const Text("Pay Now"),
+                            label: const Text(
+                              "Pay Now",
+                              style: TextStyle(color: Colors.white),
+                            ),
                             onPressed: upiId.isNotEmpty
                                 ? () => _payWithUPI(upiId, amount, expenseTitle)
                                 : null,

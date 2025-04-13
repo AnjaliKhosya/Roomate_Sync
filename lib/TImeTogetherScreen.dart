@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'PollScreen.dart';
-import 'PlanActivityScreen.dart';
+import 'PlannedActivitiesScreen.dart'; // ✅ Updated import
 import 'package:roomate_sync/PushNotificationService.dart';
 
 class TimeTogetherScreen extends StatefulWidget {
@@ -16,16 +16,17 @@ class TimeTogetherScreen extends StatefulWidget {
 class _TimeTogetherScreenState extends State<TimeTogetherScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  final List<Map<String, String>> activities = [
-    {'title': 'Movie Night', 'image': 'assets/images/MovieNight.jpg'},
-    {'title': 'Dinner & Cooking', 'image': 'assets/images/Cooking.jpg'},
-    {'title': 'Gossip Time', 'image': 'assets/images/Gossip.jpg'},
-    {'title': 'Game Night', 'image': 'assets/images/Game.jpg'},
-    {'title': 'Outing', 'image': 'assets/images/OutingPicture.jpg'},
-    {'title': 'Issue Sharing', 'image': 'assets/images/ -2.jpg'},
-    {'title': 'Shopping Together', 'image': 'assets/images/Shopping.jpg'},
-    {'title': 'Makeover Night', 'image': 'assets/images/Styling.jpg'},
-    {'title': 'Dance & Music Night', 'image': 'assets/images/Dancing.jpg'},
+  final List<Map<String, dynamic>> activities = [
+    {'title': 'Movie Night', 'image': 'assets/images/Movie.jpg', 'width': 180.0, 'height': 130.0},
+    {'title': 'Dinner & Cooking', 'image': 'assets/images/Cooking.jpg', 'width': 140.0, 'height': 120.0},
+    {'title': 'Gossip Time', 'image': 'assets/images/Gossip.jpg', 'width': 150.0, 'height': 100.0},
+    {'title': 'Game Night', 'image': 'assets/images/Game.jpg', 'width': 120.0, 'height': 120.0},
+    {'title': 'Outing', 'image': 'assets/images/OutingPicture.jpg', 'width': 100.0, 'height': 100.0},
+    {'title': 'Issue Sharing', 'image': 'assets/images/ -2.jpg', 'width': 120.0, 'height': 120.0},
+    {'title': 'Shopping Together', 'image': 'assets/images/Shopping.jpg', 'width': 150.0, 'height': 120.0},
+    {'title': 'Makeover Night', 'image': 'assets/images/ -4.jpg', 'width': 100.0, 'height': 100.0},
+    {'title': 'Dance & Music Night', 'image': 'assets/images/Dancing.jpg', 'width': 140.0, 'height': 120.0},
+    {'title': 'Digital Detox Day', 'image': 'assets/images/Premium Vector | Digital detox and meditation_ Woman meditating in lotus pose.jpg', 'width': 150.0, 'height': 110.0},
   ];
 
   final Set<String> selectedActivities = {};
@@ -67,8 +68,11 @@ class _TimeTogetherScreenState extends State<TimeTogetherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF121212),
       appBar: AppBar(
-        title: Text("Time Together"),
+        title: Text("Time Together", style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFF121212),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -90,7 +94,7 @@ class _TimeTogetherScreenState extends State<TimeTogetherScreen> {
                         );
                       },
                       child: Card(
-                        color: Colors.blue.shade50,
+                        color: Colors.blue.shade100,
                         elevation: 4,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
@@ -115,12 +119,12 @@ class _TimeTogetherScreenState extends State<TimeTogetherScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PlanActivityScreen(roomCode: widget.roomCode),
+                            builder: (context) => PlannedActivitiesScreen(roomCode: widget.roomCode), // ✅ Updated navigation
                           ),
                         );
                       },
                       child: Card(
-                        color: Colors.green.shade50,
+                        color: Colors.green.shade100,
                         elevation: 4,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
@@ -129,9 +133,9 @@ class _TimeTogetherScreenState extends State<TimeTogetherScreen> {
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
                             children: [
-                              Icon(Icons.event_available, size: 36, color: Colors.green),
+                              Icon(Icons.event_note_outlined, size: 36, color: Colors.green),
                               SizedBox(height: 8),
-                              Text("Plan Activity", style: TextStyle(fontWeight: FontWeight.w600)),
+                              Text("Planned Activities", style: TextStyle(fontWeight: FontWeight.w600)), // ✅ Updated label
                             ],
                           ),
                         ),
@@ -146,7 +150,7 @@ class _TimeTogetherScreenState extends State<TimeTogetherScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 "Select activities below to create a poll:",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.white),
               ),
             ),
             SizedBox(height: 10),
@@ -163,51 +167,70 @@ class _TimeTogetherScreenState extends State<TimeTogetherScreen> {
               itemBuilder: (context, index) {
                 final activity = activities[index];
                 final isSelected = selectedActivities.contains(activity['title']);
+                final double w = activity['width'] as double;
+                final double ht = activity['height'] as double;
+
                 return GestureDetector(
                   onTap: () => toggleSelection(activity['title']!),
                   child: Card(
-                    color: isSelected ? Colors.blue.shade200 : Colors.white,
+                    color: isSelected ? Colors.blue : Colors.white,
                     elevation: 5,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(activity['image']!, height: 60),
-                        SizedBox(height: 8),
-                        Text(activity['title']!, style: TextStyle(fontWeight: FontWeight.bold)),
-                      ],
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: w,
+                            height: ht,
+                            child: Image.asset(
+                              activity['image']!,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          Text(activity['title']!, style: TextStyle(fontWeight: FontWeight.bold)),
+                        ],
+                      ),
                     ),
                   ),
                 );
               },
             ),
             Padding(
-              padding: EdgeInsets.all(16),
-              child: ElevatedButton(
-                onPressed: () async {
-                  if (selectedActivities.isEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Please select at least one activity")),
+              padding: EdgeInsets.only(left: 130, bottom: 30,top: 20),
+              child: Container(
+                height: 45 ,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 5,
+                    backgroundColor: Colors.green,
+                  ),
+                  onPressed: () async {
+                    if (selectedActivities.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Please select at least one activity")),
+                      );
+                      return;
+                    }
+
+                    await createPoll();
+
+                    await PushNotificationService.sendNotificationToAllRoommates(
+                      roomCode: widget.roomCode,
+                      title: '🕒 Time Together',
+                      body: 'New poll created! Cast your vote now.',
                     );
-                    return;
-                  }
 
-                  await createPoll();
-
-                  await PushNotificationService.sendNotificationToAllRoommates(
-                    roomCode: widget.roomCode,
-                    title: '🕒 Time Together',
-                    body: 'New poll created! Cast your vote now.',
-                  );
-
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PollScreen(roomCode: widget.roomCode),
-                    ),
-                  );
-                },
-                child: Text("Create Poll"),
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PollScreen(roomCode: widget.roomCode),
+                      ),
+                    );
+                  },
+                  child: Text("Create Poll", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400)),
+                ),
               ),
             ),
           ],

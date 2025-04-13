@@ -18,7 +18,7 @@ class _TaskScreenState extends State<TaskScreen>
   @override
   void initState() {
     super.initState();
-    deleteExpiredTasks(widget.roomCode);
+    autoDeleteExpiredTasks(widget.roomCode);
     fetchAllUserNames();
   }
 
@@ -51,6 +51,7 @@ class _TaskScreenState extends State<TaskScreen>
           .doc(widget.roomCode)
           .collection('Roomates')
           .doc(userId);
+
       await userFieldRef.update({
         'totalTasks': FieldValue.increment(-1),
       });
@@ -64,29 +65,33 @@ class _TaskScreenState extends State<TaskScreen>
       print('Error updating task count: $e');
     }
   }
-  Future<void> deleteExpiredTasks(String roomCode) async {
-    try {
-      final firestore = FirebaseFirestore.instance;
-      final now = DateTime.now();
+  Future<void> autoDeleteExpiredTasks(String roomCode) async {
+    final tasksCollection = FirebaseFirestore.instance
+        .collection('rooms')
+        .doc(roomCode)
+        .collection('tasks');
 
-      var expiredTasks = await firestore
-          .collection('rooms')
-          .doc(roomCode)
-          .collection('tasks')
-          .where('deadline', isLessThan: Timestamp.fromDate(now))
-          .get();
+    final querySnapshot = await tasksCollection.get();
 
-      for (var task in expiredTasks.docs) {
-        await firestore
-            .collection('rooms')
-            .doc(roomCode)
-            .collection('tasks')
-            .doc(task.id)
-            .delete();
+    final now = DateTime.now();
+
+    for (var doc in querySnapshot.docs) {
+      final data = doc.data();
+      final Timestamp? deadlineTimestamp = data['deadline'];
+
+      if (deadlineTimestamp != null) {
+        final DateTime deadline = deadlineTimestamp.toDate();
+        if (now.isAfter(deadline)) {
+          final String? userId = data['assignedTo'];
+          final String? status = data['status'];
+
+          if (userId != null && status != null) {
+            await DecrementNoOfTasks(userId, status);
+          }
+
+          await tasksCollection.doc(doc.id).delete();
+        }
       }
-
-    } catch (e) {
-      print("Error deleting expired tasks: $e");
     }
   }
   Future<void> fetchAllUserNames() async {
@@ -272,7 +277,7 @@ class _TaskScreenState extends State<TaskScreen>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 1.0),
+                                    padding: const EdgeInsets.only(left: 1.0,bottom:3),
                                     child: IconButton(
                                       onPressed: () async{
                                         var TaskSnapshot = await FirebaseFirestore.instance.collection('rooms').doc(widget.roomCode).collection('tasks').doc(task.id).get();

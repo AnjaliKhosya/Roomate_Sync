@@ -43,7 +43,7 @@ class _VarifyState extends State<Varify> {
         title: Text('The verification link has been sent to your email. Please check your inbox and then refresh to confirm.',style: TextStyle(fontSize: 20,color: Colors.black,fontFamily: 'Italicfont',fontWeight: FontWeight.bold),),
         content: ElevatedButton(onPressed: ()=>reload(),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0Xff284B63),
+              backgroundColor: Color(0xFF0B0B45),
             ),
             child: Icon(Icons.refresh,color: Colors.white,)),
       );

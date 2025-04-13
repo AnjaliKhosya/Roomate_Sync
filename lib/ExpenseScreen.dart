@@ -83,7 +83,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: Color(0Xfff284B63),
+                  color: Color(0xFF0B0B45),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
               ),
               child:StreamBuilder<QuerySnapshot>(
@@ -220,7 +220,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
           ScaffoldMessenger.of(context).clearSnackBars();
           Navigator.push(context, MaterialPageRoute(builder: (context)=>NewExpenseScreen(roomCode: roomcode,)));
         },
-        child: Icon(Icons.add,color: Color(0Xff284B63),size: 40,),
+        child: Icon(Icons.add,color: Color(0xFF0B0B45),size: 40,),
         backgroundColor: Colors.white,
       ),
     );

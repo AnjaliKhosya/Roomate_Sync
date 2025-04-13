@@ -83,7 +83,7 @@ class _roomcodeScreenState extends State<roomcodeScreen>
               title: Center(child: Text(newRoomcode)),
               content: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0Xfff284B63),
+                  backgroundColor: Color(0xFF0B0B45),
                 ),
                 onPressed: ()async{
                   await addInFireStore(newRoomcode);
@@ -135,7 +135,7 @@ class _roomcodeScreenState extends State<roomcodeScreen>
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Create a Room Code',style: TextStyle(color: Colors.white,fontFamily: 'Italicfont'))),
-        backgroundColor:  Color(0Xfff284B63),
+        backgroundColor:  Color(0xFF0B0B45),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -175,13 +175,13 @@ class _roomcodeScreenState extends State<roomcodeScreen>
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(
-                                color: Color(0Xff353535),
+                                color: Color(0xFF0B0B45),
                               )
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(
-                                color: Color(0Xff14123D),
+                                color: Color(0xFF0B0B45),
                                 width: 1,
                               )
                           ),
@@ -204,7 +204,7 @@ class _roomcodeScreenState extends State<roomcodeScreen>
                   joinRoom();
                 },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0Xfff284B63)
+                        backgroundColor: Color(0xFF0B0B45)
                     ),
                     child: Text('Join Room',style: TextStyle(fontSize: 20,fontFamily: 'Italicfont',color: Colors.white),)),//join room
                 Padding(
@@ -237,7 +237,7 @@ class _roomcodeScreenState extends State<roomcodeScreen>
                   createRoom();
                 },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0Xfff284B63)
+                        backgroundColor: Color(0xFF0B0B45)
                     ),
                     child: Text('New Room Code',style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w300,fontFamily: 'Italicfont',fontSize: 20

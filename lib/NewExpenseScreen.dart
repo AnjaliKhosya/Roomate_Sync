@@ -17,7 +17,7 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
   var fields = ['Expense Title', 'Date', 'Amount', 'Paid by', 'Owed by'];
 
   bool isLoading = false;
-  List<Map<String, String>> roommates = []; // Store both ID and Name
+  List<Map<String, String>> roommates = [];
   String? selectedPaidPersonId;
   List<String> selectedOwedRoommateIds = [];
   List<TextEditingController> _controller = [];
@@ -31,7 +31,6 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
     fetchRoommates();
   }
 
-  /// Fetch Roommates with ID and Name
   Future<void> fetchRoommates() async {
     setState(() => isLoading = true);
 
@@ -58,7 +57,6 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
     }
   }
 
-  /// Add Expense
   Future<void> addExpense() async {
     if (formKey.currentState!.validate()) {
       try {
@@ -84,7 +82,6 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
           ),
         );
 
-        // Clear fields after submission
         for (var controller in _controller) {
           controller.clear();
         }
@@ -109,11 +106,10 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            // Header Section
             Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              color: const Color(0Xfff284B63),
+              color: const Color(0xFF0B0B45),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -142,22 +138,21 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
               ),
             ),
 
-            // Form Section
             Positioned(
               top: 200,
               left: 0,
               right: 0,
               bottom: 0,
               child: Container(
-                decoration: BoxDecoration(
-                  color: const Color(0XfffD9D9D9),
-                  borderRadius: const BorderRadius.only(
+                decoration: const BoxDecoration(
+                  color: Color(0XfffD9D9D9),
+                  borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30),
                     topLeft: Radius.circular(30),
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
                   child: Column(
                     children: [
                       Expanded(
@@ -178,7 +173,7 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                                             fontWeight: FontWeight.w300,
                                             fontSize: 20,
                                             fontFamily: 'Italicfont',
-                                            color: Color(0Xfff353535),
+                                            color: Color(0xFF0B0B45),
                                           ),
                                         ),
                                         const SizedBox(height: 8),
@@ -208,6 +203,10 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                                               border: OutlineInputBorder(
                                                 borderRadius: BorderRadius.circular(15),
                                               ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.circular(15),
+                                                borderSide: const BorderSide(color: Color(0xFF0B0B45), width: 2),
+                                              ),
                                             ),
                                             onChanged: (value) {
                                               setState(() {
@@ -230,7 +229,7 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                                             ))
                                                 .toList(),
                                             title: const Text("Select Roommates"),
-                                            selectedColor: Colors.teal,
+                                            selectedColor: Color(0xFF0B0B45),
                                             decoration: BoxDecoration(
                                               color: const Color(0XfffD9D9D6),
                                               borderRadius: BorderRadius.circular(15),
@@ -277,6 +276,10 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                                               border: OutlineInputBorder(
                                                 borderRadius: BorderRadius.circular(15),
                                               ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.circular(15),
+                                                borderSide: const BorderSide(color: Color(0xFF0B0B45), width: 2),
+                                              ),
                                             ),
                                             validator: (value) {
                                               if (value!.isEmpty) {
@@ -293,16 +296,22 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                                 ElevatedButton(
                                   onPressed: addExpense,
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color(0xFFF284B63),   // ✅ Custom background color
-                                    foregroundColor: Colors.white,               // ✅ White text color for better contrast
-                                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                                    backgroundColor: const Color(0xFF0B0B45),
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25),    // Rounded corners
+                                      borderRadius: BorderRadius.circular(25),
                                     ),
                                   ),
-                                  child: const Text("Add +",style: TextStyle(fontWeight: FontWeight.bold,fontFamily: 'Italicfont',fontSize: 20),),
+                                  child: const Text(
+                                    "Add +",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Italicfont',
+                                      fontSize: 20,
+                                    ),
+                                  ),
                                 )
-
                               ],
                             ),
                           ),

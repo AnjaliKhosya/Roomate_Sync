@@ -138,7 +138,6 @@ BJcZyGWZmt6A/yJCanoFNuI=
 
   static Future<void> sendNotificationToSelectedRoommate(
       String deviceToken,
-      BuildContext context,
       String userId,
       String title,
       String body

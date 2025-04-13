@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RoommateStatsPage extends StatefulWidget {
-  final String roomCode; // Pass the room code to this page.
+  final String roomCode;
 
   const RoommateStatsPage({Key? key, required this.roomCode}) : super(key: key);
 
@@ -14,8 +14,16 @@ class _RoommateStatsPageState extends State<RoommateStatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF121212), // Dark background
       appBar: AppBar(
-        title: Text("Roommate Statistics"),
+        title: const Text(
+          "Roommate Statistics",
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF1F1F1F),
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -25,16 +33,22 @@ class _RoommateStatsPageState extends State<RoommateStatsPage> {
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator(color: Colors.white));
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text("No roommates found."));
+            return const Center(
+              child: Text(
+                "No roommates found.",
+                style: TextStyle(color: Colors.white70, fontSize: 16),
+              ),
+            );
           }
 
           final roommatesData = snapshot.data!.docs;
 
           return SingleChildScrollView(
+            padding: const EdgeInsets.only(top: 24.0,bottom:24, left: 100),
             child: Column(
               children: roommatesData.map((doc) {
                 final data = doc.data() as Map<String, dynamic>;
@@ -44,45 +58,45 @@ class _RoommateStatsPageState extends State<RoommateStatsPage> {
                 final percentage = totalTasks > 0 ? tasksCompleted / totalTasks : 0.0;
 
                 return Padding(
-                  padding: const EdgeInsets.only(left: 100.0,top: 50),
+                  padding: const EdgeInsets.symmetric(vertical: 30.0),
                   child: Column(
                     children: [
                       Stack(
                         alignment: Alignment.center,
                         children: [
-                          // Circular Progress Indicator
                           SizedBox(
-                            width: 170,
-                            height: 170,
+                            width: 160,
+                            height: 160,
                             child: CircularProgressIndicator(
                               value: percentage,
-                              strokeWidth: 12,
-                              backgroundColor: Colors.grey[300],
+                              strokeWidth: 10,
+                              backgroundColor: Colors.grey[800],
                               valueColor: AlwaysStoppedAnimation<Color>(
                                 percentage > 0.75
-                                    ? Colors.green
+                                    ? Colors.greenAccent
                                     : percentage > 0.5
-                                    ? Colors.yellow
-                                    : Colors.red,
+                                    ? Colors.amber
+                                    : Colors.redAccent,
                               ),
                             ),
                           ),
-                          // Task Stats and User Name
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                "$tasksCompleted/$totalTasks",
-                                style: TextStyle(
-                                  fontSize: 20,
+                                "$tasksCompleted / $totalTasks",
+                                style: const TextStyle(
+                                  fontSize: 22,
                                   fontWeight: FontWeight.bold,
+                                  color: Colors.white,
                                 ),
                               ),
+                              const SizedBox(height: 8),
                               Text(
                                 userName,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ],
@@ -100,5 +114,3 @@ class _RoommateStatsPageState extends State<RoommateStatsPage> {
     );
   }
 }
-
-

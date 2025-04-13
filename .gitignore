@@ -47,3 +47,6 @@ app.*.map.json
 # Firebase Service Account Key (DO NOT COMMIT)
 roomatesync-83596-firebase-adminsdk-fbsvc-2f0c552060.json
 assets/roomatesync-83596-firebase-adminsdk-fbsvc-2f0c552060.json
+.env
+functions/index.js
+

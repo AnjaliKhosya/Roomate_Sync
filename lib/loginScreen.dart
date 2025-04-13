@@ -240,7 +240,7 @@ class _loginScreenState extends State<loginScreen>
                                 signIn();
                               },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0Xff284B63),
+                                    backgroundColor: Color(0xFF0B0B45),
                                   ),
                                   child: Text('Sign in',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300,color: Colors.white,fontFamily: 'Italicfont'),)),
                             ),//Login
@@ -273,7 +273,7 @@ class _loginScreenState extends State<loginScreen>
                               height: 40,
                               child: ElevatedButton(onPressed: () => signInWithGoogle(),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0Xff284B63),
+                                  backgroundColor: Color(0xFF0B0B45),
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,

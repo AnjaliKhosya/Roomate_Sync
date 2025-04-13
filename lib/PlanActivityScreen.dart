@@ -31,10 +31,23 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
     'Shopping Together',
     'Makeover Night',
     'Dance & Music Night',
+    'Digital Detox Day',
     'Other',
   ];
 
   bool get isCustom => selectedActivity == 'Other';
+
+  InputDecoration _inputDecoration(String hint, {IconData? icon}) {
+    return InputDecoration(
+      hintText: hint,
+      filled: true,
+      fillColor: Colors.grey.shade100,
+      suffixIcon: icon != null ? Icon(icon, color: const Color(0xFF0B0B45)) : null,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+    );
+  }
 
   @override
   void dispose() {
@@ -49,6 +62,9 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Plan Activity'),
+        backgroundColor: const Color(0xFF0B0B45),
+        foregroundColor: Colors.white,
+        elevation: 2,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -56,12 +72,21 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
           key: _formKey,
           child: ListView(
             children: [
-              const Text("Select Activity", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              const Text(
+                "Select Activity",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF0B0B45),
+                ),
+              ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
-                decoration: const InputDecoration(border: OutlineInputBorder()),
-                hint: const Text("Choose an activity"),
+                decoration: _inputDecoration("Choose an activity"),
                 value: selectedActivity,
+                style: const TextStyle(fontSize: 16, color: Color(0xFF0B0B45)),
+                iconEnabledColor: const Color(0xFF0B0B45),
+                dropdownColor: Colors.white,
                 items: activityOptions.map((String activity) {
                   return DropdownMenuItem<String>(
                     value: activity,
@@ -77,14 +102,18 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
               ),
               if (isCustom) ...[
                 const SizedBox(height: 20),
-                const Text("Enter Custom Title", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                const Text(
+                  "Enter Custom Title",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF0B0B45),
+                  ),
+                ),
                 const SizedBox(height: 10),
                 TextFormField(
                   controller: _customTitleController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter your activity name',
-                  ),
+                  decoration: _inputDecoration('Enter your activity name'),
                   validator: (value) {
                     if (isCustom && (value == null || value.trim().isEmpty)) {
                       return 'Please enter custom activity title';
@@ -94,15 +123,19 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
                 ),
               ],
               const SizedBox(height: 20),
-              const Text("Select Date", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              const Text(
+                "Select Date",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF0B0B45),
+                ),
+              ),
               const SizedBox(height: 10),
               TextFormField(
                 controller: _dateController,
                 readOnly: true,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Choose a date',
-                ),
+                decoration: _inputDecoration('Choose a date', icon: Icons.calendar_today),
                 onTap: () async {
                   final pickedDate = await showDatePicker(
                     context: context,
@@ -120,15 +153,19 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
                 validator: (value) => value == null || value.isEmpty ? 'Please select a date' : null,
               ),
               const SizedBox(height: 20),
-              const Text("Select Time", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              const Text(
+                "Select Time",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF0B0B45),
+                ),
+              ),
               const SizedBox(height: 10),
               TextFormField(
                 controller: _timeController,
                 readOnly: true,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Choose a time',
-                ),
+                decoration: _inputDecoration('Choose a time', icon: Icons.access_time),
                 onTap: () async {
                   final pickedTime = await showTimePicker(
                     context: context,
@@ -144,10 +181,17 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
                 validator: (value) => value == null || value.isEmpty ? 'Please select a time' : null,
               ),
               const SizedBox(height: 30),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
+
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.zero, // remove default padding
+                    maximumSize: const Size(70, 50), // exact width and height
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
                   onPressed: () async {
                     if (_formKey.currentState?.validate() != true) return;
 
@@ -176,20 +220,28 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
                             .collection('rooms')
                             .doc(widget.roomCode)
                             .collection('activities')
-                            .doc(); // Auto ID
+                            .doc();
 
                         await activityRef.set({
                           'title': activity,
                           'timestamp': eventDateTime.toUtc(),
                           'notified': false,
-                          'createdAt': FieldValue.serverTimestamp(),
                         });
 
                         if (mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Activity "$activity" planned successfully')),
                           );
-                          Navigator.pop(context);
+
+                          // Reset all fields
+                          setState(() {
+                            selectedActivity = null;
+                            _customTitleController.clear();
+                            _dateController.clear();
+                            _timeController.clear();
+                            selectedDate = null;
+                            selectedTime = null;
+                          });
                         }
                       } catch (e) {
                         if (mounted) {
@@ -200,9 +252,10 @@ class _PlanActivityScreenState extends State<PlanActivityScreen> {
                       }
                     }
                   },
-                  child: const Text("Plan Activity"),
+
+                  child: const Text("Plan Activity",style: TextStyle(fontSize: 17),),
                 ),
-              ),
+
             ],
           ),
         ),

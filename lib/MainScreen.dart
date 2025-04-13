@@ -14,6 +14,8 @@ import 'ProfileScreen.dart';
 import 'CameraScreen.dart';
 import 'AlbumScreen.dart';
 import 'TimeTogetherScreen.dart';
+import 'PushNotificationService.dart';
+import 'package:intl/intl.dart';
 
 class MainScreen extends StatefulWidget {
   final String roomCode;
@@ -32,16 +34,122 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
     fetchProfileImage();
+    checkAndSendActivityReminders(widget.roomCode);
+    sendDeadlineReminders(widget.roomCode);
   }
+
+  Future<void> checkAndSendActivityReminders(String roomCode) async {
+    final now = DateTime.now();
+    final windowEnd = now.add(const Duration(minutes: 30)); // 30 min window
+
+    final activitySnapshot = await FirebaseFirestore.instance
+        .collection('rooms')
+        .doc(roomCode)
+        .collection('activities')
+        .where('notified', isEqualTo: false) // Only check unnotified ones
+        .get();
+
+    for (final doc in activitySnapshot.docs) {
+      final data = doc.data();
+      final scheduledAt = (data['timestamp'] as Timestamp).toDate();
+
+      if (scheduledAt.isAfter(now) && scheduledAt.isBefore(windowEnd)) {
+        final title = data['title'] ?? 'Planned Activity';
+
+        // ✅ Send notification to all roommates
+        await PushNotificationService.sendNotificationToAllRoommates(
+          roomCode: roomCode,
+          title: "⏰ Time Together Reminder!",
+          body: "Don't forget: $title starts at ${DateFormat.jm().format(scheduledAt)}",
+        );
+
+        // ✅ Mark as notified so it’s not sent again
+        await doc.reference.update({'notified': true});
+      }
+    }
+  }
+
+  Future<void> sendDeadlineReminders(String roomCode) async {
+    try {
+      final tasksSnapshot = await FirebaseFirestore.instance
+          .collection('rooms')
+          .doc(roomCode)
+          .collection('tasks')
+          .get();
+
+      final today = DateTime.now();
+
+      for (final doc in tasksSnapshot.docs) {
+        final data = doc.data();
+        final String? deadlineStr = data['deadline'];
+        final String? assignedTo = data['assignedTo'];
+        final String? title = data['title'];
+        final bool reminderSent = data['DeadlineReminder'] ?? false;
+
+        if (deadlineStr == null || assignedTo == null || reminderSent) continue;
+
+        // Parse deadline from string format 'dd/MM/yyyy'
+        final deadlineDate = DateFormat('dd/MM/yyyy').parse(deadlineStr);
+        final isToday = deadlineDate.year == today.year &&
+            deadlineDate.month == today.month &&
+            deadlineDate.day == today.day;
+
+        if (isToday) {
+          // Get FCM token of the assigned roommate
+          final userDoc = await FirebaseFirestore.instance
+              .collection('rooms')
+              .doc(roomCode)
+              .collection('Roomates')
+              .doc(assignedTo)
+              .get();
+
+          final token = userDoc.data()?['FCMToken'];
+          if (token != null && token.toString().isNotEmpty) {
+            await PushNotificationService.sendNotificationToSelectedRoommate(
+              token,
+              assignedTo,
+              "Task Deadline Reminder 🕒",
+              "Hey! Your task \"$title\" is due today. Don't forget to complete it!",
+            );
+
+            // 🔁 Mark DeadlineReminder as true
+            await doc.reference.update({'DeadlineReminder': true});
+          }
+        }
+      }
+    } catch (e) {
+      print("Error sending deadline reminders: $e");
+    }
+  }
+
 
   Future<void> fetchProfileImage() async {
     if (user != null) {
-      final doc = await FirebaseFirestore.instance.collection('users').doc(user!.uid).get();
-      if (doc.exists && doc.data()?['photoUrl'] != null) {
-        setState(() {
-          cloudinaryUrl = doc['photoUrl'];
-        });
+      try {
+        final docSnapshot = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user!.uid)
+            .get();
+
+        final data = docSnapshot.data();
+        if (data != null) {
+          final url = data['profileImage'] as String?;
+          if (url != null && url.isNotEmpty) {
+            setState(() {
+              cloudinaryUrl = url;
+            });
+            print("Cloudinary URL set: $cloudinaryUrl");
+          } else {
+            print("profileImage is null or empty.");
+          }
+        } else {
+          print("No document found for user ${user!.uid}");
+        }
+      } catch (e) {
+        print("Error fetching profile image: $e");
       }
+    } else {
+      print("User is null");
     }
   }
 
@@ -99,14 +207,21 @@ class _MainScreenState extends State<MainScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: GestureDetector(
-              onTap: () => Get.to(() => ProfileScreen(roomCode: widget.roomCode)),
+              onTap: () async {
+                await Get.to(() => ProfileScreen(roomCode: widget.roomCode));
+                await fetchProfileImage(); // refresh profile image after returning
+              },
+
               child: CircleAvatar(
                 radius: 20,
                 backgroundColor: Colors.grey.shade300,
-                backgroundImage: (cloudinaryUrl != null || user?.photoURL != null)
-                    ? NetworkImage(cloudinaryUrl ?? user!.photoURL!)
+                backgroundImage: (cloudinaryUrl != null && cloudinaryUrl!.isNotEmpty)
+                    ? NetworkImage(cloudinaryUrl!)
+                    : (user?.photoURL != null && user!.photoURL!.isNotEmpty)
+                    ? NetworkImage(user!.photoURL!)
                     : null,
-                child: (cloudinaryUrl == null && user?.photoURL == null)
+                child: (cloudinaryUrl == null &&
+                    (user?.photoURL == null || user!.photoURL!.isEmpty))
                     ? const Icon(Icons.person, size: 24, color: Colors.black)
                     : null,
               ),

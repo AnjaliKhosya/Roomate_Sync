@@ -1,11 +1,9 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math';
-import 'dart:typed_data';
 
 class NotificationServices {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -53,6 +51,29 @@ class NotificationServices {
     });
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+    // ✅ Refresh token logic
+    FirebaseMessaging.instance.onTokenRefresh.listen((newToken) async {
+      print('🔁 Refreshed FCM Token: $newToken');
+
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        DocumentSnapshot userDoc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .get();
+
+        String? roomCode = userDoc['roomCode'];
+        if (roomCode != null) {
+          await FirebaseFirestore.instance
+              .collection('rooms')
+              .doc(roomCode)
+              .collection('users')
+              .doc(user.uid)
+              .update({'fcmToken': newToken});
+        }
+      }
+    });
   }
 
   /// ✅ Background message handler function

@@ -88,37 +88,64 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> updateProfileData() async {
+    final updatedName = nameController.text.trim();
+    final updatedUpi = upiController.text.trim();
+
+    // Update in `users` collection
     await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
-      'name': nameController.text.trim(),
-      'upiId': upiController.text.trim(),
+      'name': updatedName,
+      'upiId': updatedUpi,
     });
+
+    // Update in `Roomates` subcollection inside the room
+    await FirebaseFirestore.instance
+        .collection('rooms')
+        .doc(widget.roomCode)
+        .collection('Roomates')
+        .doc(user.uid)
+        .update({
+      'name': updatedName,
+    });
+
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text("Profile updated")),
     );
   }
 
+
   void logout() async {
     final user = FirebaseAuth.instance.currentUser;
 
-    // Get the list of sign-in methods (providers) for this user
-    final providerData = user?.providerData ?? [];
-
-    for (final provider in providerData) {
-      if (provider.providerId == 'google.com') {
-        await GoogleSignIn().signOut(); // Sign out from Google only if used
-        break;
+    if (user != null) {
+      try {
+        // Delete user document from Firestore
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).delete();
+      } catch (e) {
+        debugPrint("Failed to delete user document: $e");
       }
-    }
 
-    await FirebaseAuth.instance.signOut();
+      // Sign out from Google if used
+      final providerData = user.providerData;
+      for (final provider in providerData) {
+        if (provider.providerId == 'google.com') {
+          await GoogleSignIn().signOut();
+          break;
+        }
+      }
+
+      // Firebase sign out
+      await FirebaseAuth.instance.signOut();
+    }
 
     if (!mounted) return;
 
+    // Navigate to login screen
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(builder: (context) => loginScreen()),
           (route) => false,
     );
   }
+
 
 
   @override
