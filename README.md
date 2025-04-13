@@ -47,20 +47,6 @@
 
 ---
 
-## 📷 App Screenshots
-
-> Rename these image files in your `assets/ScreenShots/` folder accordingly to match these filenames.
-
-![UPI Init](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.06.jpeg)
-![UPI Confirmation](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.07.jpeg)
-![UPI Paid](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.08.jpeg)
-
-![Reminder 1](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.09.jpeg)
-![Reminder 2](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.09 (1).jpeg)
-![Reminder 3](assets/ScreenShots/WhatsApp Image 2025-04-13 at 09.15.09 (2).jpeg)
-
----
-
 ## 🧩 Planned Features
 
 ### 💳 UPI Payment Integration
