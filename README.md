@@ -55,29 +55,30 @@
 
 ## 📷 App Screenshots
 
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.06.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.07.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.08.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.08%20%281%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.08%20%282%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.09.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.09%20%281%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.09%20%282%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10%20%281%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10%20%282%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11%20%281%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11%20%282%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/59b721315bee3df275a8d893b3e5d2cd39cd8fc0/assets/ScreenShots/WhatsApp%20Image%202025-05-16%20at%2017.19.11.jpeg?raw=true)
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.12%20%282%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.13.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.13%20%281%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14%20%281%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14%20%282%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.15.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.15%20%281%29.jpeg?raw=true)
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.06.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.07.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.08.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.08%20%281%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.08%20%282%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.09.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.09%20%281%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.09%20%282%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10%20%281%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10%20%282%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11%20%281%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11%20%282%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/59b721315bee3df275a8d893b3e5d2cd39cd8fc0/assets/ScreenShots/WhatsApp%20Image%202025-05-16%20at%2017.19.11.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.12%20%282%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.13.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.13%20%281%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14%20%281%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14%20%282%29.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.15.jpeg?raw=true" alt="image_alt" width="300" />
+<img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.15%20%281%29.jpeg?raw=true" alt="image_alt" width="300" />
+
 
 ---
 
