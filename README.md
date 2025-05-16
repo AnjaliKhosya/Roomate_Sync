@@ -4,57 +4,54 @@
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
 ### ✅ Task Management
-- Assign and track tasks.
-- Mark tasks as complete with real-time updates.
-- Get notifications on task assignments and deadlines.
-- Automatic deletion of tasks upon completion or deadline expiry.
+- Assign, track, and complete household tasks.
+- Real-time notifications for task assignments, deadlines, and completions.
+- Automatic deletion of tasks once completed or expired.
 
 ### 💸 Expense Management
-- Split expenses among selected roommates.
-- Drop-down roommate selector with individual due amount display.
+- Split expenses among roommates.
+- Periodic reminders sent to roommates with pending payments.
+- Notifications confirming payment settlement sent to payers.
 
-### 🔔 Notifications
-- Smart alerts for:
-  - Task assignments and deadlines.
-  - Polls and planned activities.
-  - Deadline reminders.
+### 🔔 Smart Notifications
+- Alerts for task deadlines, poll activities, and expense dues.
+- Confirmation notifications after payments.
+- Recurring reminders until payments are made.
 
 ### 🗳️ Polls & Activity Planning
-- Create and vote on activities (e.g., movie nights, game sessions).
-- "Plan Activity" button for manual or poll-based scheduling.
+- Create polls for shared activities like movie nights or outings.
+- Display poll results visually with bar graphs after expiry.
+- Notify roommates of poll results and winning activities.
+- Plan activities directly from polls with calendar integration.
 
-### 📷 In-App Gallery
-- Capture and upload photos and videos.
-- Store and retrieve images and videos from Firebase.
-- Personal or group album support.
+### 📷 Multimedia Gallery
+- Capture and upload photos/videos within the app.
+- Store media securely using Firebase Storage.
+- Create personal and group albums.
+
+### 👤 Profile Page
+- Upload and update your profile photo directly within the app.
+- View and manage your uploaded photos.
+- Profile images are synced and securely stored using Firebase Storage.
 
 ### 📊 Statistics Dashboard
-- Visual insights of assigned tasks and completed tasks.
+- Visual insights on tasks assigned vs. completed.
 
 ---
 
 ## 🚀 Tech Stack
 
-- **Frontend**: Flutter
-- **Backend**: Firebase (Auth, Firestore, Storage, FCM)
-- **Notifications**: Firebase Cloud Messaging
-- **Payments**: Cashfree UPI Gateway
-- **State Management**: Provider (or your chosen state manager)
-- **Other**: Markdown, GitHub Actions (optional CI)
+- **Frontend:** Flutter  
+- **Backend:** Firebase (Authentication, Firestore, Storage, Cloud Messaging)  
+- **Notifications:** Firebase Cloud Messaging (FCM)  
+- **State Management:** Provider (or your preferred state manager)  
+- **Media Storage:** Firebase Storage / Cloudinary (optional)
 
 ---
 
-## 🧩 Planned Features
-
-### 💳 UPI Payment Integration
-- Seamless expense settlement using **Cashfree UPI Gateway**.
-- Direct redirection to UPI apps (e.g., PhonePe, GPay) with pre-filled UPI ID and amount.
-- Automatically updates balances and marks shares as settled.
-- Removes the need for manual confirmation.
-- Smart notifications for pending payments.
 
 ## 📷 App Screenshots
 
@@ -72,8 +69,7 @@
 ![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11.jpeg?raw=true)  
 ![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11%20%281%29.jpeg?raw=true)  
 ![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11%20%282%29.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.12.jpeg?raw=true)  
-![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.12%20%281%29.jpeg?raw=true)  
+
 ![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.12%20%282%29.jpeg?raw=true)  
 ![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.13.jpeg?raw=true)  
 ![image_alt](https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.13%20%281%29.jpeg?raw=true)  
