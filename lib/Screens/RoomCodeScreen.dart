@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'MainScreen.dart';
-import 'package:roomate_sync/notification_services.dart';
+import 'package:roomate_sync/Screens/MainScreen.dart';
+import 'package:roomate_sync/services/notification_services.dart';
 
 class roomcodeScreen extends StatefulWidget{
   @override

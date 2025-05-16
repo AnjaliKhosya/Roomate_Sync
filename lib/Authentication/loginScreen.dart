@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:roomate_sync/RoomCodeScreen.dart';
-import 'package:roomate_sync/signUp_CreatingAccount.dart';
-import 'package:roomate_sync/wrapper.dart';
-import 'forgetPassword.dart';
+import 'package:roomate_sync/Authentication/signUp_CreatingAccount.dart';
+import 'package:roomate_sync/services/wrapper.dart';
+import 'package:roomate_sync/Authentication//forgetPassword.dart';
 
 class loginScreen extends StatefulWidget
 {

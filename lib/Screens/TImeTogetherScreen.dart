@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'PollScreen.dart';
-import 'PlannedActivitiesScreen.dart'; // ✅ Updated import
-import 'package:roomate_sync/PushNotificationService.dart';
+import 'package:roomate_sync/Screens/PollScreen.dart';
+import 'package:roomate_sync/Screens/PlannedActivitiesScreen.dart';
+import 'package:roomate_sync/services/PushNotificationService.dart';
 
 class TimeTogetherScreen extends StatefulWidget {
   final String roomCode;

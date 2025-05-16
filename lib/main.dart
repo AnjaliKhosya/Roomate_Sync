@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'firebase_options.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:roomate_sync/wrapper.dart';
-import 'package:roomate_sync/notification_services.dart';
+import 'package:roomate_sync/services/wrapper.dart';
+import 'package:roomate_sync/services/notification_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

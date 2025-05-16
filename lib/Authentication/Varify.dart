@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:roomate_sync/wrapper.dart';
+import 'package:roomate_sync/services/wrapper.dart';
 
 class Varify extends StatefulWidget{
   @override

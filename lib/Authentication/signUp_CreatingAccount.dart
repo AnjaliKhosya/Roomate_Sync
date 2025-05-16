@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:roomate_sync/wrapper.dart';
+import 'package:roomate_sync/services/wrapper.dart';
 
 
 class signUpScreen extends StatefulWidget{

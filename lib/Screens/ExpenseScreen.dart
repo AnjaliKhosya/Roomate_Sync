@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:roomate_sync/NewExpenseScreen.dart';
-import 'package:intl/intl.dart';
-import 'DetailExpensePage.dart';
+import 'package:roomate_sync/Screens/NewExpenseScreen.dart';
+import 'package:roomate_sync/Screens/DetailExpensePage.dart';
 
 class ExpenseScreen extends StatefulWidget{
   final String roomCode;
@@ -14,7 +13,7 @@ class ExpenseScreen extends StatefulWidget{
 
 class _ExpenseScreenState extends State<ExpenseScreen> {
 
-  @override
+
   deleteExpense(String expenseId)async{
     try{
       final firestore = FirebaseFirestore.instance;

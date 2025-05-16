@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:roomate_sync/NewTaskScreen.dart';
+import 'package:roomate_sync/Screens/NewTaskScreen.dart';
 
 class TaskScreen extends StatefulWidget
 {
@@ -113,7 +113,8 @@ class _TaskScreenState extends State<TaskScreen>
   }
   OnTaskCompleteChanged(bool isComplete,String userId,String taskId) async {
 
-    if(isComplete==null)return;
+    if(isComplete==null)
+      return;
     await FirebaseFirestore.instance.collection('rooms').doc(widget.roomCode).collection('tasks').doc(taskId).update({
       'status': isComplete ? 'completed' : 'pending',
     });

@@ -9,7 +9,7 @@
         android:label="roomate_sync"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true">   <!-- ✅ Moved inside application tag -->
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".MainActivity"
@@ -32,20 +32,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
-            <!-- 🔥 UPI Payment Intent Filter -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="upi" />
-            </intent-filter>
-
         </activity>
 
         <!-- Firebase Notification Channel -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="high_importance_channel" />
+            android:value="high_importance_channel"
+            />
+
 
         <!-- Flutter Plugin Meta-data -->
         <meta-data

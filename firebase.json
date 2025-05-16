@@ -1,1 +1,48 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"roomatesync-83596","appId":"1:896045844969:android:5c4ff1fc9799e47eaee378","fileOutput":"android/app/google-services.json"}},"macos":{"default":{"projectId":"roomatesync-83596","appId":"1:896045844969:ios:e68043ebf13acb24aee378","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"roomatesync-83596","configurations":{"android":"1:896045844969:android:5c4ff1fc9799e47eaee378","macos":"1:896045844969:ios:e68043ebf13acb24aee378","web":"1:896045844969:web:4378fda443390551aee378","windows":"1:896045844969:web:95b8703b96466738aee378"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "roomatesync-83596",
+          "appId": "1:896045844969:android:5c4ff1fc9799e47eaee378",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "roomatesync-83596",
+          "appId": "1:896045844969:ios:e68043ebf13acb24aee378",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "roomatesync-83596",
+          "configurations": {
+            "android": "1:896045844969:android:5c4ff1fc9799e47eaee378",
+            "macos": "1:896045844969:ios:e68043ebf13acb24aee378",
+            "web": "1:896045844969:web:4378fda443390551aee378",
+            "windows": "1:896045844969:web:95b8703b96466738aee378"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}

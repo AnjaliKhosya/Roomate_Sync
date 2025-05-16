@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:roomate_sync/notification_services.dart';
-import 'package:roomate_sync/PushNotificationService.dart';
+import 'package:roomate_sync/services/PushNotificationService.dart';
 
 class NewTaskScreen extends StatefulWidget {
   final String roomCode;

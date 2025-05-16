@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
@@ -62,6 +61,15 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
       try {
         final firestore = FirebaseFirestore.instance;
 
+        // Create list of owed roommates with isPaid = false and lastReminderSent = null
+        List<Map<String, dynamic>> owedByList = selectedOwedRoommateIds
+            .map((id) => {
+          'id': id,
+          'isPaid': false,
+          'lastReminderSent': null, // Initialize with null, no reminder sent yet
+        })
+            .toList();
+
         await firestore
             .collection('rooms')
             .doc(widget.roomCode)
@@ -71,13 +79,15 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
           'date': _controller[1].text.trim(),
           'amount': double.parse(_controller[2].text.trim()),
           'paidBy': selectedPaidPersonId,
-          'owedBy': selectedOwedRoommateIds,
-          'isPaid': false,
+          'owedBy': owedByList,
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text("Expense added successfully!", style: TextStyle(color: Colors.white)),
+            content: Text(
+              "Expense added successfully!",
+              style: TextStyle(color: Colors.white),
+            ),
             backgroundColor: Colors.green,
           ),
         );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import 'PlanActivityScreen.dart'; // Ensure this path is correct
+import 'package:roomate_sync/Screens/PlanActivityScreen.dart'; // Ensure this path is correct
 
 class PlannedActivitiesScreen extends StatelessWidget {
   final String roomCode;

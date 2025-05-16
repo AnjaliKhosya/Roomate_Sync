@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:roomate_sync/FullScreenImageScreen.dart';
-import 'package:roomate_sync/VideoPlayerScreen.dart';
+import 'package:roomate_sync/Screens/FullScreenImageScreen.dart';
+import 'package:roomate_sync/Screens/VideoPlayerScreen.dart';
 
 class AlbumScreen extends StatefulWidget {
   final String roomCode;

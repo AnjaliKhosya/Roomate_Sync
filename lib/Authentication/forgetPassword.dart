@@ -10,49 +10,66 @@ class forgetPassword extends StatefulWidget{
 class _forgetPasswordState extends State<forgetPassword> {
   final formKey = GlobalKey<FormState>();
   var email = TextEditingController();
-  reset() async{
-    if(formKey.currentState!.validate())
-    {
-      try{
-        final user = await FirebaseAuth.instance.fetchSignInMethodsForEmail(email.text);
-        if(user.isEmpty)
-        {
+  reset() async {
+    if (formKey.currentState!.validate()) {
+      try {
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: email.text);
+       /* final userMethods = await FirebaseAuth.instance.fetchSignInMethodsForEmail(email.text);
+
+        if (userMethods.isEmpty) {
           ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('No user found for this email address.',style: TextStyle(color: Colors.red),),
-                backgroundColor: Colors.white38,
-                behavior: SnackBarBehavior.floating,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ));
+            SnackBar(
+              content: Text(
+                'No user found for this email address.',
+                style: TextStyle(color: Colors.red),
+              ),
+              backgroundColor: Colors.white38,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          );
           return;
         }
-        await FirebaseAuth.instance.sendPasswordResetEmail(email: email.text);
+
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: email.text);*/
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Password reset link sent to your email!'),
             backgroundColor: Colors.green,
           ),
         );
-      } on FirebaseAuthException catch(e){
-        String errormessage = '';
-        if(e.message=='The email address is badly formatted.')
-          errormessage = 'Please enter a valid email address.';
-        else
-          errormessage = 'An error occurred, Please try again later.';
+      } on FirebaseAuthException catch (e) {
+        String errorMessage = '';
+
+        if (e.message == 'The email address is badly formatted.') {
+          errorMessage = 'Please enter a valid email address.';
+        } else {
+          errorMessage = 'An error occurred, Please try again later.';
+        }
+
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(errormessage,style: TextStyle(color: Colors.red),),
-              backgroundColor: Colors.white38,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ));
+          SnackBar(
+            content: Text(
+              errorMessage,
+              style: TextStyle(color: Colors.red),
+            ),
+            backgroundColor: Colors.white38,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        );
       }
     }
   }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

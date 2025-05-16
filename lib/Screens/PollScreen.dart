@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:roomate_sync/TimeTogetherScreen.dart'; // adjust the path if needed
+import 'package:roomate_sync/Screens/TImeTogetherScreen.dart';
 
 class PollScreen extends StatefulWidget {
   final String roomCode;
@@ -70,7 +70,6 @@ class _PollScreenState extends State<PollScreen> {
   @override
   Widget build(BuildContext context) {
     final Color primaryColor = Color(0xFF0B0B45);
-    final Color background = Colors.grey.shade100;
 
     return WillPopScope(
       onWillPop: () async {

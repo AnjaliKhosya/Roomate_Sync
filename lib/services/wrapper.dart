@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:roomate_sync/MainScreen.dart';
-import 'RoomCodeScreen.dart';
-import 'Varify.dart';
-import 'loginScreen.dart';
+import 'package:roomate_sync/Screens/MainScreen.dart';
+import 'package:roomate_sync/Screens/RoomCodeScreen.dart';
+import 'package:roomate_sync/Authentication/Varify.dart';
+import 'package:roomate_sync/Authentication/loginScreen.dart';
 
 class Wrapper extends StatefulWidget {
   @override

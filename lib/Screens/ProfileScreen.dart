@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:roomate_sync/loginScreen.dart';
+import 'package:roomate_sync/Authentication//loginScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final user = FirebaseAuth.instance.currentUser!;
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController upiController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
   String profileImage = '';
   bool isLoading = true;
@@ -32,13 +32,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> fetchUserData() async {
-    final doc = await FirebaseFirestore.instance.collection('users').doc(
-        user.uid).get();
+    final doc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
     final data = doc.data() ?? {};
 
     setState(() {
       nameController.text = data['name'] ?? '';
-      upiController.text = data['upiId'] ?? '';
+      phoneController.text = data['phoneNumber'] ?? '';
       profileImage = data['profileImage'] ?? '';
       isLoading = false;
     });
@@ -47,15 +46,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<void> pickAndUploadImage() async {
     final picker = ImagePicker();
     final picked = await picker.pickImage(
-        source: ImageSource.gallery, imageQuality: 75);
+      source: ImageSource.gallery,
+      imageQuality: 75,
+    );
 
     if (picked != null) {
       setState(() => isLoading = true);
       final url = await uploadToCloudinary(File(picked.path));
       if (url != null) {
-        await FirebaseFirestore.instance.collection('users')
-            .doc(user.uid)
-            .update({
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
           'profileImage': url,
         });
         setState(() {
@@ -70,8 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     const cloudName = 'dflkb3opw';
     const uploadPreset = 'RoomateSyncPreset';
 
-    final uri = Uri.parse(
-        "https://api.cloudinary.com/v1_1/$cloudName/image/upload");
+    final uri = Uri.parse("https://api.cloudinary.com/v1_1/$cloudName/image/upload");
     final request = http.MultipartRequest('POST', uri)
       ..fields['upload_preset'] = uploadPreset
       ..files.add(await http.MultipartFile.fromPath('file', imageFile.path));
@@ -89,12 +87,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> updateProfileData() async {
     final updatedName = nameController.text.trim();
-    final updatedUpi = upiController.text.trim();
+    final updatedPhone = phoneController.text.trim();
 
     // Update in `users` collection
     await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
       'name': updatedName,
-      'upiId': updatedUpi,
+      'phoneNumber': updatedPhone,
     });
 
     // Update in `Roomates` subcollection inside the room
@@ -108,10 +106,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Profile updated")),
+      const SnackBar(
+        content: Text("Profile updated"),
+        backgroundColor: Colors.green, // Set background color to green
+      ),
     );
-  }
 
+  }
 
   void logout() async {
     final user = FirebaseAuth.instance.currentUser;
@@ -146,15 +147,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0B0B45),
+      backgroundColor: const Color(0xFF0B0B45),
       appBar: AppBar(
         backgroundColor: const Color(0xFF0B0B45),
-        title: Text(
+        title: const Text(
           'Profile',
           style: TextStyle(
             color: Colors.white,
@@ -167,7 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         onPressed: logout,
         backgroundColor: Colors.amber,
         elevation: 4,
-        child: const Icon(Icons.logout, color: Colors.black,),
+        child: const Icon(Icons.logout, color: Colors.black),
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -186,8 +185,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       backgroundColor: Colors.grey.shade200,
                       backgroundImage: profileImage.isNotEmpty
                           ? NetworkImage(profileImage)
-                          : const AssetImage(
-                          'assets/images/DefaultImage.jpg') as ImageProvider,
+                          : const AssetImage('assets/images/DefaultImage.jpg') as ImageProvider,
                     ),
                     Positioned(
                       bottom: 0,
@@ -206,8 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               )
                             ],
                           ),
-                          child: const Icon(Icons.camera_alt_outlined, size: 20,
-                              color: Colors.black),
+                          child: const Icon(Icons.camera_alt_outlined, size: 20, color: Colors.black),
                         ),
                       ),
                     ),
@@ -217,7 +214,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 30),
               buildInputField("Name", nameController),
               const SizedBox(height: 16),
-              buildInputField("UPI ID", upiController),
+              buildInputField("Phone Number", phoneController),
               const SizedBox(height: 30),
               Align(
                 alignment: Alignment.center,
@@ -229,15 +226,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
                       foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25)),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
                     ),
-                    child: const Text("Update Profile",
-                        style: TextStyle(fontSize: 16, color: Colors.black)),
+                    child: const Text(
+                      "Update Profile",
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
                   ),
                 ),
               ),
-
               const SizedBox(height: 60),
             ],
           ),
@@ -249,6 +246,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget buildInputField(String hint, TextEditingController controller) {
     return TextField(
       controller: controller,
+      keyboardType: hint == "Phone Number" ? TextInputType.phone : TextInputType.text,
       style: const TextStyle(color: Colors.black87),
       decoration: InputDecoration(
         hintText: hint,
@@ -258,8 +256,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         labelStyle: const TextStyle(color: Colors.transparent),
         filled: true,
         fillColor: Colors.grey.shade100,
-        contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.black12),
           borderRadius: BorderRadius.circular(20),
@@ -271,5 +268,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
-
 }

@@ -3,19 +3,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:roomate_sync/NewTaskScreen.dart';
-import 'package:roomate_sync/loginScreen.dart';
-import 'ExpenseScreen.dart';
-import 'NewExpenseScreen.dart';
-import 'Statistics.dart';
-import 'Tasks.dart';
-import 'ProfileScreen.dart';
-import 'CameraScreen.dart';
-import 'AlbumScreen.dart';
-import 'TimeTogetherScreen.dart';
-import 'PushNotificationService.dart';
+import 'package:roomate_sync/Screens/NewTaskScreen.dart';
+import 'package:roomate_sync/Screens/ExpenseScreen.dart';
+import 'package:roomate_sync/Screens/NewExpenseScreen.dart';
+import 'package:roomate_sync/Screens/Statistics.dart';
+import 'package:roomate_sync/Screens/Tasks.dart';
+import 'package:roomate_sync/Screens/ProfileScreen.dart';
+import 'package:roomate_sync/Screens/CameraScreen.dart';
+import 'package:roomate_sync/Screens/AlbumScreen.dart';
+import 'package:roomate_sync/services/PushNotificationService.dart';
 import 'package:intl/intl.dart';
+import 'package:roomate_sync/Screens/TImeTogetherScreen.dart';
 
 class MainScreen extends StatefulWidget {
   final String roomCode;
@@ -36,6 +34,7 @@ class _MainScreenState extends State<MainScreen> {
     fetchProfileImage();
     checkAndSendActivityReminders(widget.roomCode);
     sendDeadlineReminders(widget.roomCode);
+    sendPaymentReminders(widget.roomCode);
   }
 
   Future<void> checkAndSendActivityReminders(String roomCode) async {
@@ -119,6 +118,92 @@ class _MainScreenState extends State<MainScreen> {
       }
     } catch (e) {
       print("Error sending deadline reminders: $e");
+    }
+  }
+
+  Future<void> sendPaymentReminders(String roomCode) async {
+    final expensesSnapshot = await FirebaseFirestore.instance
+        .collection('rooms')
+        .doc(roomCode)
+        .collection('expenses')
+        .where('owedBy', isNotEqualTo: null) // just to be safe
+        .get();
+
+    final now = DateTime.now();
+    final reminderInterval = Duration(days: 2); // Change this to your desired interval
+
+    Set<String> unpaidUserIds = {};
+
+    for (final doc in expensesSnapshot.docs) {
+      final data = doc.data();
+      final List<dynamic> owedByList = data['owedBy'] ?? [];
+
+      for (int i = 0; i < owedByList.length; i++) {
+        final owedUser = Map<String, dynamic>.from(owedByList[i]);
+
+        final userId = owedUser['id'];
+        final isPaid = owedUser['isPaid'] ?? true; // default true if missing
+        final lastReminderSentTimestamp = owedUser['lastReminderSent'];
+
+        DateTime? lastReminderSent;
+        if (lastReminderSentTimestamp != null) {
+          lastReminderSent = (lastReminderSentTimestamp is Timestamp)
+              ? lastReminderSentTimestamp.toDate()
+              : DateTime.tryParse(lastReminderSentTimestamp.toString());
+        }
+
+        if (!isPaid) {
+          bool shouldSendReminder = false;
+
+          if (lastReminderSent == null) {
+            // No reminder sent before - send now
+            shouldSendReminder = true;
+          } else {
+            // Check if enough time has passed since last reminder
+            final difference = now.difference(lastReminderSent);
+            if (difference >= reminderInterval) {
+              shouldSendReminder = true;
+            }
+          }
+
+          if (shouldSendReminder) {
+            unpaidUserIds.add(userId);
+
+            // Update lastReminderSent in Firestore for this user inside owedBy list
+            final owedByListUpdated = List<Map<String, dynamic>>.from(owedByList);
+            owedByListUpdated[i]['lastReminderSent'] = Timestamp.fromDate(now);
+
+            await FirebaseFirestore.instance
+                .collection('rooms')
+                .doc(roomCode)
+                .collection('expenses')
+                .doc(doc.id)
+                .update({'owedBy': owedByListUpdated});
+          }
+        }
+      }
+    }
+
+    for (final userId in unpaidUserIds) {
+      final userDoc = await FirebaseFirestore.instance
+          .collection('rooms')
+          .doc(roomCode)
+          .collection('Roomates')
+          .doc(userId)
+          .get();
+
+      if (userDoc.exists) {
+        final fcmToken = userDoc.data()?['FCMToken'];
+
+        if (fcmToken != null && fcmToken.isNotEmpty) {
+          await PushNotificationService.sendNotificationToSelectedRoommate(
+            fcmToken,
+            userId,
+            "⏰ Pending Payment",
+            "You still owe money on one or more expenses. Please pay your part!",
+          );
+        }
+      }
     }
   }
 
