@@ -52,7 +52,7 @@
 
 ---
 
-## Download RoommateSync APK
+## 📲 Download RoommateSync APK 🚀
 
 You can download the latest version of the RoommateSync app as a ZIP file containing the APK here:
 
