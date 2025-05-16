@@ -68,16 +68,40 @@
 </p>
 
 <p float="left" style="margin-top:10px;">
-  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/main/assets/ScreenShots/sample7.jpeg" alt="image7" width="300" style="margin-right:10px;"/>
-  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/main/assets/ScreenShots/sample8.jpeg" alt="image8" width="300" style="margin-right:10px;"/>
-  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/main/assets/ScreenShots/sample9.jpeg" alt="image9" width="300" />
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.09%20%281%29.jpeg?raw=true" alt="image7" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.09%20%282%29.jpeg?raw=true" alt="image8" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10.jpeg?raw=true" alt="image9" width="300" />
 </p>
 
 <p float="left" style="margin-top:10px;">
-  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/main/assets/ScreenShots/sample10.jpeg" alt="image10" width="300" style="margin-right:10px;"/>
-  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/main/assets/ScreenShots/sample11.jpeg" alt="image11" width="300" style="margin-right:10px;"/>
-  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/main/assets/ScreenShots/sample12.jpeg" alt="image12" width="300" />
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10%20%281%29.jpeg?raw=true" alt="image10" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.10%20%282%29.jpeg?raw=true" alt="image11" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11.jpeg?raw=true" alt="image12" width="300" />
 </p>
+
+<p float="left" style="margin-top:10px;">
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11%20%281%29.jpeg?raw=true" alt="image13" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.11%20%282%29.jpeg?raw=true" alt="image14" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/59b721315bee3df275a8d893b3e5d2cd39cd8fc0/assets/ScreenShots/WhatsApp%20Image%202025-05-16%20at%2017.19.11.jpeg?raw=true" alt="image15" width="300" />
+</p>
+
+<p float="left" style="margin-top:10px;">
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.12%20%282%29.jpeg?raw=true" alt="image16" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.13.jpeg?raw=true" alt="image17" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.13%20%281%29.jpeg?raw=true" alt="image18" width="300" />
+</p>
+
+<p float="left" style="margin-top:10px;">
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14.jpeg?raw=true" alt="image19" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14%20%281%29.jpeg?raw=true" alt="image20" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.14%20%282%29.jpeg?raw=true" alt="image21" width="300" />
+</p>
+
+<p float="left" style="margin-top:10px;">
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.15.jpeg?raw=true" alt="image22" width="300" style="margin-right:10px;"/>
+  <img src="https://github.com/AnjaliKhosya/Roomate_Sync/blob/dedc0b73fbc9faa18101188a1f4d281dbd278a25/assets/ScreenShots/WhatsApp%20Image%202025-04-13%20at%2009.15.15%20%281%29.jpeg?raw=true" alt="image23" width="300" style="margin-right:10px;"/>
+</p>
+
 
 
 
