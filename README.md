@@ -42,16 +42,6 @@
 
 ---
 
-## 🚀 Tech Stack
-
-- **Frontend:** Flutter  
-- **Backend:** Firebase (Authentication, Firestore, Storage, Cloud Messaging)  
-- **Notifications:** Firebase Cloud Messaging (FCM)  
-- **State Management:** Provider (or your preferred state manager)  
-- **Media Storage:** Firebase Storage / Cloudinary (optional)
-
----
-
 ## 📲 Download RoommateSync APK 🚀
 
 You can download the latest version of the RoommateSync app as a ZIP file containing the APK here:
@@ -118,9 +108,14 @@ You can download the latest version of the RoommateSync app as a ZIP file contai
   </tr>
 </table>
 
+---
+## 🚀 Tech Stack
 
-
-
+- **Frontend:** Flutter  
+- **Backend:** Firebase (Authentication, Firestore, Storage, Cloud Messaging)  
+- **Notifications:** Firebase Cloud Messaging (FCM)  
+- **State Management:** Provider (or your preferred state manager)  
+- **Media Storage:** Firebase Storage / Cloudinary (optional)
 
 ---
 
